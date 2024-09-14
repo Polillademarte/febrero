@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto alrededor de imagen</title>
+    <style>
+        body {
+            background-image: url('Lola.JPG'); /* Establece la imagen de fondo */
+            background-size: cover; /* Ajusta la imagen para cubrir toda el área del fondo */
+            background-position: center; /* Centra la imagen en el fondo */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            color: #222;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden; /* Evita que el contenido se desborde del contenedor */
+            filter: contrast(120%); /* Ajusta el contraste de toda la página */
+        }
+        .contenedor {
+            display: flex;
+            flex-direction: row; /* Cambiado a row para imágenes horizontales */
+            align-items: center;
+            background-color: #f5f5dc; /* Fondo del cuadro */
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Solo sombra, sin borde */
+            width: 90%; /* Aumenta el ancho del cuadro */
+            max-width: 1600px; /* Ajusta el ancho máximo del cuadro para acomodar las imágenes más grandes */
+            text-align: center; /* Centrar contenido dentro del cuadro */
+            border: none; /* Elimina el borde negro */
+            position: relative;
+            overflow: auto; /* Permite que el contenido se desborde si es necesario */
+            margin: 0 auto; /* Centra el contenedor horizontalmente */
+            z-index: 20; /* Asegura que el contenedor esté sobre la imagen lateral */
+            transform: translateX(10%); /* Mueve el contenedor hacia la derecha */
+        }
+        .contenedor::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f5f5dc; /* Color de fondo para aplicar el filtro */
+            filter: grayscale(100%); /* Aplica el filtro de escala de grises */
+            z-index: -1; /* Envía el pseudo-elemento detrás del contenido del contenedor */
+        }
+        .contenedor img {
+            height: 400px; /* Ajusta la altura de las imágenes */
+            width: auto; /* Mantiene la proporción de la imagen */
+            margin: 0 20px; /* Espacio entre las imágenes */
+            object-fit: cover; /* Asegura que la imagen cubra el área especificada sin distorsionarse */
+        }
+        .contenedor p {
+            margin: 55px 0 0 0;
+            white-space: pre-wrap; /* Preservar saltos de línea */
+            color: #222;
+        }
+
+        /* Estilo para la imagen del costado izquierdo detrás del contenedor */
+        .imagen-lateral {
+            position: absolute;
+            top: 5%; /* Ajusta la posición vertical de la imagen */
+            left: 0;
+            width: 400px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: 80%;
+            margin: 10px; /* Espacio del borde del contenedor */
+            z-index: 5; /* Asegura que la imagen esté detrás del contenedor */
+        }
+
+        /* Estilo para los cuadros de texto */
+        .text-boxes {
+            position: absolute;
+            top: 48%;
+            left: 77%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            box-sizing: border-box;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            overflow: auto;
+            z-index: 30; /* Asegura que los cuadros de texto estén sobre la imagen lateral */
+        }
+        .text-boxes div {
+            width: calc(50% - 20px); /* Ancho del cuadro de texto */
+            margin: 50px;
+            padding: 10px;
+            background-color: #f5f5dc; /* Fondo del cuadro de texto */
+            box-shadow: 0px 4px 55px rgba(0, 0, 0, 0.2); /* Sombra para los cuadros de texto */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <img src="file.png" alt="Imagen lateral" class="imagen-lateral">
+    
+    <div class="contenedor">
+        <img src="enero.png" alt="Imagen">
+        <img src="tres.png" alt="Imagen">
+        <img src="cuatro.png" alt="Imagen">
+        <p>La no escritura</p>
+    </div>
+    
+    <div class="text-boxes">
+        <div>A veces, el lenguaje se convierte en un obstáculo. Somos emoción antes que pensamiento. Me desvivo con la emoción, vertiginosas laderas que emanan pena.</div>
+        <div>El vertedero vocal desemboca en la honestidad. La página deja de estar en blanco, pero, a pesar de su contenido, no puedo evitar sentir que lo que he escrito no aporta nada importante.</div>
+        <div>Comenzó como un nudo en la garganta, un leve temblor de manos que desencadenó un mutismo interno que me hacía incapaz de expresar lo que sucedía a mi alrededor.</div>
+        <div>Las configuraciones del lenguaje no siempre se dan en términos verbales.</div>
+    </div>
+</body>
+</html>
